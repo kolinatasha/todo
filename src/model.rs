@@ -5,10 +5,16 @@ What # is used for
     # appears before attributes, like #[derive(Debug)] or #![allow(unused)], which attach metadata to items or crates.​
 
     In doc tests (code examples inside /// comments), # at the start of a line can hide that line from rendered docs while still running it in tests.
-*/
+
+    Serde: for converting struct to/from JSON
 
 
-#[derive(Debug, Clone, PartialEq, Eq)]
+
+    */
+
+use serde::{Deserialize, Serialize};
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Task{
     pub id: u64,
     pub text: String,
@@ -26,7 +32,7 @@ pub enum TodoError{
     NotFound(u64),
 }
 
-#[derive(Debug, Default)]
+#[derive(Debug, Default, Serialize, Deserialize)]
 pub struct TodoList{
     pub tasks: Vec<Task>,
     pub next_id: u64,
@@ -135,7 +141,7 @@ mod tests{
     fn remove_deletes_task(){
         let mut list = TodoList::new();
         let id1 = list.add("a".to_string()).id;
-        let id2 =list.add("b".to_string()).id;
+        let _id2 =list.add("b".to_string()).id;
 
         list.remove(id1).unwrap();
         assert_eq!(list.list().len() , 1);
