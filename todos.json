@@ -1,0 +1,25 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "text": "buy bread",
+      "done": true
+    },
+    {
+      "id": 2,
+      "text": "buy Google",
+      "done": false
+    },
+    {
+      "id": 3,
+      "text": "buy Microsoft",
+      "done": false
+    },
+    {
+      "id": 4,
+      "text": "buy milk",
+      "done": false
+    }
+  ],
+  "next_id": 5
+}
